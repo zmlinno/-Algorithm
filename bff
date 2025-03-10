@@ -1,0 +1,37 @@
+#include <string>
+#include <vector>
+#include <queue>
+#include <unordered_set>
+using namespace std;
+
+int solution(int x, int y, int n) {
+    if(x == y)return 0; //已经是目标值，直接返回0
+    
+    queue<pair<int,int>>q;//队列存储，- 当前值，操作次数
+    unordered_set<int>visited; //记录访问过的次数，避免重复计算
+    
+    q.push({x,0});
+    visited.insert(x);
+    
+    while(!q.empty())
+    {
+        int current = q.front().first;
+        int steps = q.front().second;
+        q.pop();
+        
+        //生成所有可能的下一个值
+        int nextValues[] = {current + n,current * 2,current * 3};
+        
+        for(int next : nextValues)
+        {
+            if(next == y)return steps+1; //找到目标值
+            if(next < y && visited.find(next) == visited.end())
+            {
+                q.push({next,steps+1});
+                visited.insert(next);
+            }
+        }
+    }
+    return -1;
+ 
+}
