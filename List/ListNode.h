@@ -1,7 +1,7 @@
 #pragma once
 #ifndef  LISTNODE_H
 #define LISTNODE_H
-
+//LeetCode
 struct ListNode
 {
 	int val;
