@@ -4,6 +4,7 @@
 #include<vector>
 #include<string>
 #include<cmatch>
+#include<cstring>
 using namespace std;
 
 int main()
